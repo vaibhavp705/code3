@@ -1,4 +1,4 @@
-CODE: 
+
 
 # Naive String Matching Algorithm
 def naive_string_matching(text, pattern):
