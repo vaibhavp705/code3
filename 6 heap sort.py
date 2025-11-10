@@ -1,42 +1,21 @@
-CODE: 
+def heapify(a, n, i):
+    l, r, m = 2*i+1, 2*i+2, i
+    if l < n and a[l] > a[m]: m = l
+    if r < n and a[r] > a[m]: m = r
+    if m != i:
+        a[i], a[m] = a[m], a[i]
+        heapify(a, n, m)
 
-def heapify(arr, n, i):
-    #Ensure the subtree rooted at index i satisfies the max-heap property
-    largest = i
-    left = 2 * i + 1
-    right = 2 * i + 2
+def heap_sort(a):
+    n = len(a)
+    for i in range(n//2-1, -1, -1):  # Step 1: Build max heap
+        heapify(a, n, i)
+    for i in range(n-1, 0, -1):      # Step 2: Extract elements
+        a[0], a[i] = a[i], a[0]      # Move max to end
+        heapify(a, i, 0)             # Restore heap for remaining elements
 
-    if left < n and arr[left] > arr[largest]:
-        largest = left
-
-    if right < n and arr[right] > arr[largest]:
-        largest = right
-
-    if largest != i:
-        arr[i], arr[largest] = arr[largest], arr[i]
-        heapify(arr, n, largest)
-
-
-def heap_sort(arr):
-    n = len(arr)
-
-    # Build max heap
-    for i in range(n // 2 - 1, -1, -1):
-        heapify(arr, n, i)
-
-    # Extract elements from heap
-    for i in range(n - 1, 0, -1):
-        arr[i], arr[0] = arr[0], arr[i]  # Move max to end
-        heapify(arr, i, 0)
-
-def display_array(arr, message="Array"):
-    #Display the array in a clean format.
-    print(f"{message}: {arr}")
-
-# Example usage
-if __name__ == "__main__":
-    data = [12, 11, 13, 5, 6, 7]
-    display_array(data, "Original array")
-    heap_sort(data)
-    display_array(data, "Sorted array")
- 
+# Example
+arr = [12, 11, 13, 5, 6, 7]
+print("Original array:", arr)
+heap_sort(arr)
+print("Sorted array:", arr)
