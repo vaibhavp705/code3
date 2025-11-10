@@ -1,5 +1,3 @@
-3. Circular Queue
-
 #include <iostream>
 using namespace std;
 
@@ -108,22 +106,3 @@ int main() {
 
     return 0;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Output:
- 
-
-
