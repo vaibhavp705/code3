@@ -1,9 +1,8 @@
-2. Stack
-
 #include <iostream>
 #include <stack>
 #include <string>
 #include <algorithm>
+#include <cctype> // for isdigit
 using namespace std;
 
 // Node structure for linked list stack
@@ -55,7 +54,7 @@ bool isOperand(char c) {
     return (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') || (isdigit(c));
 }
 
-// Infix ? Postfix
+// Infix to Postfix
 string infixToPostfix(string infix) {
     Stack st;
     string postfix = "";
@@ -82,17 +81,14 @@ string infixToPostfix(string infix) {
     return postfix;
 }
 
-// Infix ? Prefix
+// Infix to Prefix
 string infixToPrefix(string infix) {
-    // reverse infix
     reverse(infix.begin(), infix.end());
     for (int i = 0; i < (int)infix.size(); i++) {
         if (infix[i] == '(') infix[i] = ')';
         else if (infix[i] == ')') infix[i] = '(';
     }
-    // get postfix of reversed
     string postfix = infixToPostfix(infix);
-    // reverse postfix ? prefix
     reverse(postfix.begin(), postfix.end());
     return postfix;
 }
@@ -101,7 +97,7 @@ string infixToPrefix(string infix) {
 int main() {
     string infix;
     cout << "Enter Infix Expression: ";
-    cin >> infix;
+    cin >> infix; // Or use getline(cin, infix);
 
     string postfix = infixToPostfix(infix);
     string prefix = infixToPrefix(infix);
@@ -112,6 +108,3 @@ int main() {
 
     return 0;
 }
-
-Output:
- 
