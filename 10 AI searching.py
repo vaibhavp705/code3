@@ -1,5 +1,3 @@
-10.AI Search Algorithm
-
 import heapq
 
 # Maze constants
@@ -65,8 +63,8 @@ def astar_search(maze, start, goal):
 def print_maze(maze, path=None, start=None, goal=None):
     maze_copy = [row[:] for row in maze]
     if path:
-        for r,c in path:
-            if (r,c) != start and (r,c) != goal:
+        for r, c in path:
+            if (r, c) != start and (r, c) != goal:
                 maze_copy[r][c] = PATH
     if start:
         maze_copy[start[0]][start[1]] = START
@@ -103,17 +101,3 @@ if __name__ == "__main__":
         print("Path sequence:", path)
     else:
         print("No path found!")
-
-
-
-
-
-
-
-
-
-
-
-Output:
-
- 
